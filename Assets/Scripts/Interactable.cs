@@ -3,22 +3,61 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interactible : MonoBehaviour
+[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(SpriteRenderer))]
+public class Interactable : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject pickup;
+    public float minAlpha = 0.7f;
+    public float maxAlpha = 1.0f;
+    public float alphaChange = 0.2f;
+    private bool fadeIn = false;
+
+    private SpriteRenderer _renderer;
+
     void Start()
     {
-        
+        _renderer = GetComponent<SpriteRenderer>();
+        var color = _renderer.color;
+        color.a = 0.7f;
+        _renderer.color = color;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        var dT = Time.deltaTime;
+        var color = _renderer.color;
+        if (color.a >= minAlpha && !fadeIn)
+        {
+            color.a -= alphaChange * dT;
+        }
+        else if (color.a <= maxAlpha && fadeIn)
+        {
+            color.a += alphaChange * dT;
+        }
         
+        _renderer.color = color;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        var interactor = other.GetComponent<Interactor>();
+        if (!interactor)
+        {
+            return;
+        }
+
+        fadeIn = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        var interactor = other.GetComponent<Interactor>();
+        if (!interactor)
+        {
+            return;
+        }
+
+        fadeIn = false;
     }
 }
