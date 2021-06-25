@@ -6,8 +6,11 @@ public class MoveAround : MonoBehaviour
 {
     public float speed = 1.0f;
 
+    private Rigidbody2D _body;
+    
     void Start()
     {
+        _body = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -16,28 +19,28 @@ public class MoveAround : MonoBehaviour
         var dT = Time.deltaTime;
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            var transformPosition = transform.position;
+            var transformPosition = _body.position;
             transformPosition.x -= speed * dT;
-            transform.position = transformPosition;
+            _body.position = transformPosition;
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            var transformPosition = transform.position;
+            var transformPosition = _body.position;
             transformPosition.x += speed * dT;
-            transform.position = transformPosition;
+            _body.position = transformPosition;
         }
         
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            var transformPosition = transform.position;
+            var transformPosition = _body.position;
             transformPosition.y += speed * dT;
-            transform.position = transformPosition;
+            _body.position = transformPosition;
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
-            var transformPosition = transform.position;
+            var transformPosition = _body.position;
             transformPosition.y -= speed * dT;
-            transform.position = transformPosition;
+            _body.position = transformPosition;
         }
     }
 }
