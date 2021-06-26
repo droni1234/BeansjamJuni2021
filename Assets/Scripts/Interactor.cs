@@ -11,6 +11,11 @@ public class Interactor : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (!currentInteractable)
@@ -27,7 +32,11 @@ public class Interactor : MonoBehaviour
             var surgeryTable = currentInteractable.GetComponent<SurgeryTable>();
             var teslaCoil = currentInteractable.GetComponent<TeslaCoil>();
             var rat = currentInteractable.GetComponent<Rat>();
-            if (interactable.pickup)
+            if (rat)
+            {
+                Destroy(rat.gameObject);
+            }
+            else if (interactable.pickup)
             {
                 DestroyChildren();
 
@@ -56,10 +65,6 @@ public class Interactor : MonoBehaviour
             {
                 surgeryTable = FindObjectOfType<SurgeryTable>();
                 teslaCoil.Zap(surgeryTable);
-            }
-            else if (rat)
-            {
-                Destroy(rat.gameObject);
             }
         }
     }

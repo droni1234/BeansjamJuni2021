@@ -120,7 +120,7 @@ public class Rat : MonoBehaviour
         {
             _delayTime += Time.deltaTime;
 
-            if (_delayTime > stealingDelay)
+            if (_delayTime > stealingDelay && _surgeryTable)
             {
                 _surgeryTable.Steal(gameObject.transform);
                 

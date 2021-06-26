@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Build;
 using UnityEngine;
 
 public class BodyPartSlot : MonoBehaviour
@@ -10,13 +7,11 @@ public class BodyPartSlot : MonoBehaviour
     
     private BodyPart _part;
     
-    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
