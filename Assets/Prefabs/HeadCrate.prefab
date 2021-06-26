@@ -148,3 +148,4 @@ MonoBehaviour:
   minAlpha: 0.5
   maxAlpha: 1
   alphaChange: 0.5
+  actionCost: 2

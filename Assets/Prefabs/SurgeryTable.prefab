@@ -419,6 +419,7 @@ MonoBehaviour:
   minAlpha: 0.5
   maxAlpha: 1
   alphaChange: 0.5
+  actionCost: 3
 --- !u!114 &325111958006222454
 MonoBehaviour:
   m_ObjectHideFlags: 0

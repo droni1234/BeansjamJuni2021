@@ -10,6 +10,8 @@ public class TeslaCoil : MonoBehaviour
     public float overChargeMinus = 40.0f;
 
     public TextMeshPro txt;
+
+    private bool _won = false;
     
     void Start()
     {
@@ -32,9 +34,9 @@ public class TeslaCoil : MonoBehaviour
 
     public void Zap(SurgeryTable surgeryTable)
     {
-        if (surgeryTable)
+        if (!_won && surgeryTable)
         {
-            surgeryTable.Zap(energyPercentage);
+            _won = surgeryTable.Zap(energyPercentage);
             energyPercentage = 0.0f;
         }
     }

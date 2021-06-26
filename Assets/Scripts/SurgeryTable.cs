@@ -32,7 +32,7 @@ public class SurgeryTable : MonoBehaviour
         }
     }
 
-    public void Zap(float energyPercentage)
+    public bool Zap(float energyPercentage)
     {
         int count = 0;
         foreach (BodyPartSlot slot in slots)
@@ -50,12 +50,14 @@ public class SurgeryTable : MonoBehaviour
             _audio.clip = victoryClips[Random.Range(0, victoryClips.Length)];
             _audio.Play();
             Debug.Log("You win!!!");
+            return true;
         }
         else
         {
             _audio.clip = failClip;
             _audio.Play();
             Debug.Log("OOOPS!!!");
+            return false;
         }
     }
     

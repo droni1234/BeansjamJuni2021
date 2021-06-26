@@ -1,9 +1,15 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Interactor : MonoBehaviour
 {
-    private GameObject currentInteractable;
-    private GameObject carry;
+    public float actionProgressPerSecond = 1.0f;
+    public Transform pickupPosition;
+    public Slider progressSlider;
+
+    private float _progress = 0.0f;
+    private GameObject _currentInteractable;
+    private GameObject _carry;
 
     void Start()
     {
@@ -15,65 +21,96 @@ public class Interactor : MonoBehaviour
         {
             Application.Quit();
         }
-        
-        if (Input.GetKeyDown(KeyCode.Space))
+
+        if (_progress <= 0.0f)
         {
-            if (!currentInteractable)
+            _progress += actionProgressPerSecond * Time.deltaTime;
+        }
+        
+        if (_progress <= 0.05f)
+        {
+            progressSlider.transform.gameObject.SetActive(false);
+        }
+        else
+        {
+            progressSlider.transform.gameObject.SetActive(true);
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            if (!_currentInteractable)
             {
                 return;
             }
 
-            var interactable = currentInteractable.GetComponent<Interactable>();
+            var interactable = _currentInteractable.GetComponent<Interactable>();
             if (!interactable)
             {
                 return;
             }
 
-            var surgeryTable = currentInteractable.GetComponent<SurgeryTable>();
-            var teslaCoil = currentInteractable.GetComponent<TeslaCoil>();
-            var rat = currentInteractable.GetComponent<Rat>();
+            _progress += actionProgressPerSecond * Time.deltaTime;
+            progressSlider.value = _progress / interactable.actionCost;
+
+            if (_progress < interactable.actionCost)
+            {
+                return;
+            }
+
+            var surgeryTable = _currentInteractable.GetComponent<SurgeryTable>();
+            var teslaCoil = _currentInteractable.GetComponent<TeslaCoil>();
+            var rat = _currentInteractable.GetComponent<Rat>();
             if (rat)
             {
                 Destroy(rat.gameObject);
+                _progress = 0.0f;
             }
             else if (interactable.pickup)
             {
-                DestroyChildren();
+                DestroyCarriedBodyPart();
 
-                carry = Instantiate(
+                _carry = Instantiate(
                     interactable.pickup,
-                    transform.position,
+                    pickupPosition.position,
                     interactable.pickup.transform.rotation,
                     transform
                 );
 
-                carry.transform.localScale = interactable.pickup.transform.localScale;
+                _carry.transform.localScale = interactable.pickup.transform.localScale;
+                _progress = -0.25f;
             }
-            else if (surgeryTable && carry)
+            else if (surgeryTable && _carry)
             {
-                var bodyPart = carry.GetComponent<BodyPart>();
+                var bodyPart = _carry.GetComponent<BodyPart>();
                 if (!bodyPart)
                 {
                     return;
                 }
-                
+
                 surgeryTable.AddPart(bodyPart);
-                DestroyChildren();
-                carry = null;
+                DestroyCarriedBodyPart();
+                _carry = null;
+                _progress = -0.25f;
             }
             else if (teslaCoil)
             {
                 surgeryTable = FindObjectOfType<SurgeryTable>();
                 teslaCoil.Zap(surgeryTable);
+                _progress = -0.25f;
             }
+        }
+        else
+        {
+            _progress = 0.0f;
         }
     }
 
-    private void DestroyChildren()
+    private void DestroyCarriedBodyPart()
     {
-        foreach (Transform child in GetComponentInChildren<Transform>())
+        var bodyPart = GetComponentInChildren<BodyPart>();
+        if (bodyPart)
         {
-            Destroy(child.gameObject);
+            Destroy(bodyPart.gameObject);
         }
     }
 
@@ -84,6 +121,6 @@ public class Interactor : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        currentInteractable = other.gameObject;
+        _currentInteractable = other.gameObject;
     }
 }

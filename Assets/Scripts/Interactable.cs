@@ -11,6 +11,7 @@ public class Interactable : MonoBehaviour
     public float minAlpha = 0.7f;
     public float maxAlpha = 1.0f;
     public float alphaChange = 0.2f;
+    public float actionCost = 0.0f;
     
     private bool _fadeIn = false;
 
