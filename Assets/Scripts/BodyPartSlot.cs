@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build;
 using UnityEngine;
 
 public class BodyPartSlot : MonoBehaviour
@@ -32,6 +33,12 @@ public class BodyPartSlot : MonoBehaviour
 
         part.transform.localScale = bodyPart.transform.localScale;
     }
+
+    public void ClearSlot()
+    {
+        part = null;
+        DestroyChildren();
+    }
     
     private void DestroyChildren()
     {
@@ -39,5 +46,10 @@ public class BodyPartSlot : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+    }
+
+    public bool HasBodyPart()
+    {
+        return part != null;
     }
 }

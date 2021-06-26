@@ -27,4 +27,28 @@ public class SurgeryTable : MonoBehaviour
             }
         }
     }
+
+    public void Zap(float energyPercentage)
+    {
+        int count = 0;
+        foreach (BodyPartSlot slot in slots)
+        {
+            if (slot.HasBodyPart())
+            {
+                count++;
+            }
+            
+            slot.ClearSlot();
+        }
+
+        if (count == 6 && energyPercentage >= 100.0f)
+        {
+            // TODO: WIN!!!
+            Debug.Log("You win!!!");
+        }
+        else
+        {
+            Debug.Log("OOOPS!!!");
+        }
+    }
 }

@@ -28,6 +28,7 @@ public class Interactor : MonoBehaviour
             }
 
             var surgeryTable = currentInteractable.GetComponent<SurgeryTable>();
+            var teslaCoil = currentInteractable.GetComponent<TeslaCoil>();
             if (interactable.pickup)
             {
                 DestroyChildren();
@@ -53,6 +54,11 @@ public class Interactor : MonoBehaviour
                 DestroyChildren();
                 carry = null;
             }
+            else if (teslaCoil)
+            {
+                surgeryTable = FindObjectOfType<SurgeryTable>();
+                teslaCoil.Zap(surgeryTable);
+            }
         }
     }
 
@@ -66,7 +72,7 @@ public class Interactor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.name);
+        //Debug.Log(other.name);
     }
 
     private void OnTriggerStay2D(Collider2D other)
