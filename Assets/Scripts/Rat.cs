@@ -132,7 +132,7 @@ public class Rat : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Rat: I see table!");
+        // Debug.Log("Rat: I see table!");
         _surgeryTable = other.GetComponent<SurgeryTable>();
     }
 
@@ -140,7 +140,7 @@ public class Rat : MonoBehaviour
     {
         if (other.GetComponent<SurgeryTable>())
         {
-            Debug.Log("Rat: There is no table!");
+            // Debug.Log("Rat: There is no table!");
             _surgeryTable = null;
         }
     }
@@ -148,6 +148,6 @@ public class Rat : MonoBehaviour
     public void SetState(RatState state)
     {
         _state = state;
-        Debug.Log("Rat state: " + _state);
+        // Debug.Log("Rat state: " + _state);
     }
 }
