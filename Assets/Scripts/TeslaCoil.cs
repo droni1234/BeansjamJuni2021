@@ -1,13 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class TeslaCoil : MonoBehaviour
 {
+    public SurgeryTable surgeryTable;
     public float energyPercentage = 30.0f;
-
     public float energyPercentagePerSecond = 1.0f;
+    public float overChargePercentage = 120.0f;
+    public float overChargeMinus = 40.0f;
 
     public TextMeshPro txt;
     
@@ -17,9 +17,14 @@ public class TeslaCoil : MonoBehaviour
 
     void Update()
     {
-        if (energyPercentage < 100.0f)
+        if (energyPercentage < overChargePercentage)
         {
             energyPercentage += energyPercentagePerSecond * Time.deltaTime;
+        }
+        else
+        {
+            surgeryTable.ZapRandom();
+            energyPercentage -= overChargeMinus;
         }
 
         txt.text = energyPercentage.ToString("0.0") + "%";

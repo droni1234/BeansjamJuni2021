@@ -58,8 +58,29 @@ public class SurgeryTable : MonoBehaviour
             Debug.Log("OOOPS!!!");
         }
     }
+    
+    
+    public void ZapRandom()
+    {
+        var targetSlot = GetRandomSlot();
+        if (targetSlot)
+        {
+            targetSlot.ClearSlot();
+        }
+    }
 
     public void Steal(Transform thief)
+    {
+        var targetSlot = GetRandomSlot();
+        if (targetSlot)
+        {
+            var stolen = targetSlot.BodyPart;
+            stolen.transform.parent = thief;
+            stolen.transform.position = thief.position;
+        }
+    }
+
+    private BodyPartSlot GetRandomSlot()
     {
         List<BodyPartSlot> parts = new List<BodyPartSlot>();
         foreach (BodyPartSlot slot in slots)
@@ -72,12 +93,9 @@ public class SurgeryTable : MonoBehaviour
 
         if (parts.Count == 0)
         {
-            return;
+            return null;
         }
 
-        var targetSlot = parts[Random.Range(0, parts.Count)];
-        var stolen = targetSlot.BodyPart;
-        stolen.transform.parent = thief;
-        stolen.transform.position = thief.position;
+        return parts[Random.Range(0, parts.Count)];
     }
 }

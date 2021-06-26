@@ -951,6 +951,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &812340521 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 325111958006222454, guid: cf51a90941eb01246821fc67411f646e, type: 3}
+  m_PrefabInstance: {fileID: 325111957968966301}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812340519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbc85a22cad519a42b5f16ca4668aa9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &849878589
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2299,8 +2310,16 @@ PrefabInstance:
       value: 1992279221
       objectReference: {fileID: 0}
     - target: {fileID: 4716470027948915196, guid: ed52425660717f042b38775f6eaba232, type: 3}
+      propertyPath: surgeryTable
+      value: 
+      objectReference: {fileID: 812340521}
+    - target: {fileID: 4716470027948915196, guid: ed52425660717f042b38775f6eaba232, type: 3}
+      propertyPath: energyPercentage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716470027948915196, guid: ed52425660717f042b38775f6eaba232, type: 3}
       propertyPath: energyPercentagePerSecond
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4716470027948915197, guid: ed52425660717f042b38775f6eaba232, type: 3}
       propertyPath: m_Name
