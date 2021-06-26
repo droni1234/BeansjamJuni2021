@@ -1644,13 +1644,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66ce9705d624c44498fdc4c0856fd3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelayMin: 5
-  spawnDelayMax: 15
+  spawnDelayMin: 8
+  spawnDelayMax: 12
   spawns:
   - {fileID: 1265213088}
   - {fileID: 865209855}
   - {fileID: 1158728893}
+  spawnsBeforeLevel: 000000000200000004000000
   ratPrefab: {fileID: 45665730353181963, guid: e1673f8300aaa504eac76f1060bd80a7, type: 3}
+  ratLevel: 0
+  spawned: 0
 --- !u!4 &1926341703
 Transform:
   m_ObjectHideFlags: 0

@@ -49,7 +49,7 @@ public class Interactor : MonoBehaviour
 
                 carry.transform.localScale = interactable.pickup.transform.localScale;
             }
-            else if (surgeryTable)
+            else if (surgeryTable && carry)
             {
                 var bodyPart = carry.GetComponent<BodyPart>();
                 if (!bodyPart)

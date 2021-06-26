@@ -5,10 +5,12 @@ public class RatSpawnManager : MonoBehaviour
     public float spawnDelayMin = 5f;
     public float spawnDelayMax = 15f;
     public RatWaypoint[] spawns;
+    public int[] spawnsBeforeLevel;
     public GameObject ratPrefab;
 
     private float _delay = 0f;
-    private int _ratLevel = 0;
+    public int ratLevel = 0;
+    public int spawned = 0;
     
     void Start()
     {
@@ -23,11 +25,24 @@ public class RatSpawnManager : MonoBehaviour
         {
             _delay = Random.Range(spawnDelayMin, spawnDelayMax);
 
-            RatWaypoint spawnPoint = spawns[Random.Range(0, _ratLevel + 1)];
+            RatWaypoint spawnPoint = spawns[Random.Range(0, ratLevel + 1)];
             var rat = Instantiate(ratPrefab, spawnPoint.transform.position, Quaternion.identity);
             rat.GetComponent<Rat>().currentWaypoint = spawnPoint.nextPoint;
+            spawned++;
+        }
+
+        UpdateRatLevel();
+    }
+
+    public void UpdateRatLevel()
+    {
+        for (int i = spawnsBeforeLevel.Length - 1; i >= 0; i--)
+        {
+            if (spawned >= spawnsBeforeLevel[i])
+            {
+                ratLevel = i;
+                break;
+            }
         }
     }
-    
-    // TODO: A method to increase ratLevel which will spawn more difficult rats
 }
