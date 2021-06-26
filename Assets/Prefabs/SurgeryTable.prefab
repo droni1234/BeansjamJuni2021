@@ -364,7 +364,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 325111958006222456}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -438,3 +438,9 @@ MonoBehaviour:
   - {fileID: 325111957506051595}
   - {fileID: 325111956271904833}
   - {fileID: 325111956188771120}
+  victoryClips:
+  - {fileID: 8300000, guid: c828462881d52e0438733280383f5c10, type: 3}
+  - {fileID: 8300000, guid: 2f39a6b05252d8b46b1a1e8ccf855646, type: 3}
+  - {fileID: 8300000, guid: 80f6685afa2f2604a83a2d78a1d3dbc8, type: 3}
+  - {fileID: 8300000, guid: cd4c2b312c5646b48919d981a4ade326, type: 3}
+  failClip: {fileID: 8300000, guid: 2b8ea9b69de31604ab7915377507fa48, type: 3}

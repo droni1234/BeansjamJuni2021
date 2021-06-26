@@ -1,20 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Build;
 using UnityEngine;
 
 public class BodyPartSlot : MonoBehaviour
 {
     public BodyPart.BodyPartType forType;
-    private BodyPart part;
+    public BodyPart BodyPart => _part;
     
-    // Start is called before the first frame update
+    private BodyPart _part;
+    
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -24,19 +21,19 @@ public class BodyPartSlot : MonoBehaviour
     {
         DestroyChildren();
 
-        part = Instantiate(
+        _part = Instantiate(
             bodyPart,
             transform.position,
             bodyPart.transform.rotation,
             transform
         );
 
-        part.transform.localScale = bodyPart.transform.localScale;
+        _part.transform.localScale = bodyPart.transform.localScale;
     }
 
     public void ClearSlot()
     {
-        part = null;
+        _part = null;
         DestroyChildren();
     }
     
@@ -50,6 +47,6 @@ public class BodyPartSlot : MonoBehaviour
 
     public bool HasBodyPart()
     {
-        return part != null;
+        return _part != null;
     }
 }

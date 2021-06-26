@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Interactor : MonoBehaviour
@@ -14,6 +11,11 @@ public class Interactor : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (!currentInteractable)
@@ -29,7 +31,12 @@ public class Interactor : MonoBehaviour
 
             var surgeryTable = currentInteractable.GetComponent<SurgeryTable>();
             var teslaCoil = currentInteractable.GetComponent<TeslaCoil>();
-            if (interactable.pickup)
+            var rat = currentInteractable.GetComponent<Rat>();
+            if (rat)
+            {
+                Destroy(rat.gameObject);
+            }
+            else if (interactable.pickup)
             {
                 DestroyChildren();
 
@@ -42,7 +49,7 @@ public class Interactor : MonoBehaviour
 
                 carry.transform.localScale = interactable.pickup.transform.localScale;
             }
-            else if (surgeryTable)
+            else if (surgeryTable && carry)
             {
                 var bodyPart = carry.GetComponent<BodyPart>();
                 if (!bodyPart)
