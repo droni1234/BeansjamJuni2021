@@ -6,7 +6,9 @@ using UnityEngine;
 public class BodyPartSlot : MonoBehaviour
 {
     public BodyPart.BodyPartType forType;
-    private BodyPart part;
+    public BodyPart BodyPart => _part;
+    
+    private BodyPart _part;
     
     // Start is called before the first frame update
     void Start()
@@ -24,19 +26,19 @@ public class BodyPartSlot : MonoBehaviour
     {
         DestroyChildren();
 
-        part = Instantiate(
+        _part = Instantiate(
             bodyPart,
             transform.position,
             bodyPart.transform.rotation,
             transform
         );
 
-        part.transform.localScale = bodyPart.transform.localScale;
+        _part.transform.localScale = bodyPart.transform.localScale;
     }
 
     public void ClearSlot()
     {
-        part = null;
+        _part = null;
         DestroyChildren();
     }
     
@@ -50,6 +52,6 @@ public class BodyPartSlot : MonoBehaviour
 
     public bool HasBodyPart()
     {
-        return part != null;
+        return _part != null;
     }
 }

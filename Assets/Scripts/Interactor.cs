@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Interactor : MonoBehaviour
@@ -29,6 +26,7 @@ public class Interactor : MonoBehaviour
 
             var surgeryTable = currentInteractable.GetComponent<SurgeryTable>();
             var teslaCoil = currentInteractable.GetComponent<TeslaCoil>();
+            var rat = currentInteractable.GetComponent<Rat>();
             if (interactable.pickup)
             {
                 DestroyChildren();
@@ -58,6 +56,10 @@ public class Interactor : MonoBehaviour
             {
                 surgeryTable = FindObjectOfType<SurgeryTable>();
                 teslaCoil.Zap(surgeryTable);
+            }
+            else if (rat)
+            {
+                Destroy(rat.gameObject);
             }
         }
     }

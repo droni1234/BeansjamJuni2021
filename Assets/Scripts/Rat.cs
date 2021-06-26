@@ -1,61 +1,153 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.U2D;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Rat : MonoBehaviour
 {
-    public float rotationSpeed = 30f;
-    public float moveSpeed = 5f;
-    
-    public RatWaypoint currentWaypoint;
-    
-    
-    void Start()
+    public float moveSpeed = 3f;
+    public float idleDelay = 1f;
+    public float stealingDelay = 2f;
+    public float lookingDelay = 0.25f;
+
+    public enum RatState
     {
-        
+        Idle,
+        Turning,
+        Moving,
+        Looking,
+        Stealing
     }
 
-    // Update is called once per frame
+    public RatWaypoint currentWaypoint;
+
+    private Rigidbody2D _body;
+    private RatState _state;
+    private float _delayTime;
+    private SurgeryTable _surgeryTable;
+
+    private void Start()
+    {
+        _body = GetComponent<Rigidbody2D>();
+        SetState(RatState.Idle);
+        _delayTime = 0.0f;
+    }
+
     void Update()
     {
-        Vector3 toTarget = currentWaypoint.transform.position - transform.position;
-        Vector3 facing = transform.up;
-        var facingAngle = Vector3.Angle(facing, toTarget);
-        Debug.Log("facing angle: " + facingAngle);
-        if (Math.Abs(facingAngle) > rotationSpeed / 60.0f) // TODO: calc FPS instead of this wrong estimate
+        if (_state == RatState.Idle)
         {
-            // Rotate gradually
-            var sign = facingAngle / Math.Abs(facingAngle);
-            transform.Rotate(transform.forward, sign * rotationSpeed * Time.deltaTime);
-            
-            return;
-        }
-        /*
-        else if (facingAngle != 0.0f)
-        {
-            // Finish rotating to 0 degrees
-            transform.Rotate(transform.forward, facingAngle);
-            return;
-        }*/
+            _delayTime += Time.deltaTime;
 
-        if (toTarget.magnitude > 0.5f)
-        {
-            // TODO: We should use physics RigidBody2D here as well once Rat has one...
-            var position = transform.position;
-            position = position + transform.up.normalized * (moveSpeed * Time.deltaTime);
-            transform.position = position;
+            if (_delayTime > idleDelay)
+            {
+                SetState(RatState.Turning);
+                _delayTime = 0.0f;
+            }
+
             return;
         }
 
-        if (currentWaypoint.nextPoint != null)
+        if (_state == RatState.Turning)
         {
-            currentWaypoint = currentWaypoint.nextPoint;
+            var toTarget = currentWaypoint.transform.position - transform.position;
+            if (Math.Abs(toTarget.x) > Math.Abs(toTarget.y))
+            {
+                var rotation = transform.localRotation;
+                rotation.z = -90;
+                transform.localRotation = rotation;
+            }
+            else
+            {
+                var rotation = transform.localRotation;
+                rotation.z = 0;
+                transform.localRotation = rotation;
+            }
+
+            SetState(RatState.Moving);
+
+            return;
         }
-        else
+
+        if (_state == RatState.Moving)
         {
-            Destroy(this.gameObject);
+            Vector2 toTarget = (currentWaypoint.transform.position - transform.position);
+            if (toTarget.magnitude > 0.1f)
+            {
+                var position = _body.position;
+                _body.position = position + toTarget.normalized * (moveSpeed * Time.deltaTime);
+            }
+            else
+            {
+                _body.position = currentWaypoint.transform.position;
+                
+                if (currentWaypoint.nextPoint)
+                {
+                    currentWaypoint = currentWaypoint.nextPoint;
+                    SetState(RatState.Looking);
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
+            }
+
+            return;
         }
+
+        if (_state == RatState.Looking)
+        {
+            if (_delayTime < lookingDelay)
+            {
+                _delayTime += Time.deltaTime;
+                return;
+            }
+
+            _delayTime = 0.0f;
+
+            if (_surgeryTable)
+            {
+                SetState(RatState.Stealing);
+            }
+            else
+            {
+                SetState(RatState.Idle);
+            }
+
+            return;
+        }
+
+        if (_state == RatState.Stealing)
+        {
+            _delayTime += Time.deltaTime;
+
+            if (_delayTime > stealingDelay)
+            {
+                _surgeryTable.Steal(gameObject.transform);
+                
+                _delayTime = 0.0f;
+                SetState(RatState.Idle);
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Rat: I see table!");
+        _surgeryTable = other.GetComponent<SurgeryTable>();
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.GetComponent<SurgeryTable>())
+        {
+            Debug.Log("Rat: There is no table!");
+            _surgeryTable = null;
+        }
+    }
+
+    public void SetState(RatState state)
+    {
+        _state = state;
+        Debug.Log("Rat state: " + _state);
     }
 }

@@ -51,4 +51,26 @@ public class SurgeryTable : MonoBehaviour
             Debug.Log("OOOPS!!!");
         }
     }
+
+    public void Steal(Transform thief)
+    {
+        List<BodyPartSlot> parts = new List<BodyPartSlot>();
+        foreach (BodyPartSlot slot in slots)
+        {
+            if (slot.HasBodyPart())
+            {
+                parts.Add(slot);
+            }
+        }
+
+        if (parts.Count == 0)
+        {
+            return;
+        }
+
+        var targetSlot = parts[Random.Range(0, parts.Count)];
+        var stolen = targetSlot.BodyPart;
+        stolen.transform.parent = thief;
+        stolen.transform.position = thief.position;
+    }
 }
