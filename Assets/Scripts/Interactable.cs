@@ -11,7 +11,8 @@ public class Interactable : MonoBehaviour
     public float minAlpha = 0.7f;
     public float maxAlpha = 1.0f;
     public float alphaChange = 0.2f;
-    private bool fadeIn = false;
+    
+    private bool _fadeIn = false;
 
     private SpriteRenderer _renderer;
 
@@ -21,17 +22,22 @@ public class Interactable : MonoBehaviour
         var color = _renderer.color;
         color.a = 0.7f;
         _renderer.color = color;
+
+        if (pickup)
+        {
+            Instantiate(pickup, transform.position, pickup.transform.rotation, transform);
+        }
     }
 
     void Update()
     {
         var dT = Time.deltaTime;
         var color = _renderer.color;
-        if (color.a >= minAlpha && !fadeIn)
+        if (color.a >= minAlpha && !_fadeIn)
         {
             color.a -= alphaChange * dT;
         }
-        else if (color.a <= maxAlpha && fadeIn)
+        else if (color.a <= maxAlpha && _fadeIn)
         {
             color.a += alphaChange * dT;
         }
@@ -47,7 +53,7 @@ public class Interactable : MonoBehaviour
             return;
         }
 
-        fadeIn = true;
+        _fadeIn = true;
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -58,6 +64,6 @@ public class Interactable : MonoBehaviour
             return;
         }
 
-        fadeIn = false;
+        _fadeIn = false;
     }
 }
