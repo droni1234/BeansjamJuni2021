@@ -21,7 +21,7 @@ public class Interactable : MonoBehaviour
     {
         _renderer = GetComponent<SpriteRenderer>();
         var color = _renderer.color;
-        color.a = 0.7f;
+        color.a = minAlpha;
         _renderer.color = color;
 
         if (pickup)
