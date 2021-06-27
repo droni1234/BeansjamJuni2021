@@ -8,6 +8,7 @@ public class CastleGate : MonoBehaviour
     public float[] secondsToPeople;
     public AudioClip[] clips;
     public int people = 0;
+    public AudioSource mobAudioSource;
     
     private AudioSource _audio;
     private Pausable _pause;
@@ -33,6 +34,7 @@ public class CastleGate : MonoBehaviour
             people = 0;
             _audio.clip = clips[people];
             _audio.Play();
+            mobAudioSource.Play();
             return;
         }
         

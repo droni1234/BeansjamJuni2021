@@ -51,6 +51,7 @@ public class MenuController : MonoBehaviour
 
     public void EndGame()
     {
+        pauseManager.Pause();
         menuVisible = true;
         gameInProgress = false;
         SceneManager.UnloadSceneAsync(gameScene);
@@ -64,6 +65,12 @@ public class MenuController : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void Victory()
+    {
+        pauseManager.Pause();
+        menuVisible = true;
     }
 
     public void UnPauseAll()

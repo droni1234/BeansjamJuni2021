@@ -41,6 +41,7 @@ public class SurgeryTable : MonoBehaviour
             _audio.clip = victoryClips[Random.Range(0, victoryClips.Length)];
             _audio.Play();
             Debug.Log("You win!!!");
+            FindObjectOfType<MenuController>().Victory();
             return true;
         }
         else

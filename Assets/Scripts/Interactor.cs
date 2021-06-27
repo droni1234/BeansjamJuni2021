@@ -42,7 +42,7 @@ public class Interactor : MonoBehaviour
 
             if (rat)
             {
-                Instantiate(ratDead, rat.transform.position, Quaternion.identity);
+                Instantiate(ratDead, rat.transform.position, Quaternion.identity, rat.transform.parent);
                 Destroy(rat.gameObject);
             }
             else if (smartRats)
