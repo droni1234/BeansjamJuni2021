@@ -41,6 +41,48 @@ TextureImporter:
   - first:
       213: -106784441488025999
     second: Lever device
+  - first:
+      213: 8080491597088856371
+    second: Chest
+  - first:
+      213: -6452850551384942798
+    second: Wall Notes
+  - first:
+      213: 6330244769191780379
+    second: Crate 3
+  - first:
+      213: -8637780326493618979
+    second: Crate 2
+  - first:
+      213: 1662988865324150494
+    second: Crate 4
+  - first:
+      213: -5992361180760345883
+    second: Blood Splatter
+  - first:
+      213: 2843213200160914871
+    second: Crate 1
+  - first:
+      213: -223356094015292424
+    second: Igor
+  - first:
+      213: 2465667928825953509
+    second: Tank 1
+  - first:
+      213: 8191132950549994773
+    second: Tank 2
+  - first:
+      213: 4010088960369203666
+    second: Tank 3
+  - first:
+      213: 8645941820364318964
+    second: Wall Window
+  - first:
+      213: -7760565098982371543
+    second: Rat Hole
+  - first:
+      213: -4949978561411596485
+    second: Wall Hatch
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -89,7 +131,7 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 1
+  alphaIsTransparency: 0
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
@@ -368,8 +410,8 @@ TextureImporter:
         y: 1551
         width: 254
         height: 493
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -390,7 +432,7 @@ TextureImporter:
         width: 170
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -398,6 +440,300 @@ TextureImporter:
       bones: []
       spriteID: 1765191cd10a48ef0800000000000000
       internalID: -106784441488025999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 1387
+        width: 231
+        height: 201
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33992079b4ca32070800000000000000
+      internalID: 8080491597088856371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall Notes
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 1107
+        width: 401
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2375408bc9ed276a0800000000000000
+      internalID: -6452850551384942798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crate 3
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 1329
+        width: 306
+        height: 350
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1063f8141c89d750800000000000000
+      internalID: 6330244769191780379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crate 2
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 1473
+        width: 167
+        height: 211
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddc7d77de80702880800000000000000
+      internalID: -8637780326493618979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crate 4
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 1243
+        width: 183
+        height: 217
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ede6317ef8f141710800000000000000
+      internalID: 1662988865324150494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood Splatter
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 1339
+        width: 120
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e270f6414bd6dca0800000000000000
+      internalID: -5992361180760345883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crate 1
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 1465
+        width: 243
+        height: 223
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bdfa40775f157720800000000000000
+      internalID: 2843213200160914871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Igor
+      rect:
+        serializedVersion: 2
+        x: 1083
+        y: 1258
+        width: 205
+        height: 293
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fbbccdd0da76ecf0800000000000000
+      internalID: -223356094015292424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tank 1
+      rect:
+        serializedVersion: 2
+        x: 1296
+        y: 1281
+        width: 151
+        height: 233
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ec7eb7eaefc73220800000000000000
+      internalID: 2465667928825953509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tank 2
+      rect:
+        serializedVersion: 2
+        x: 1450
+        y: 1279
+        width: 137
+        height: 236
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51d97812500cca170800000000000000
+      internalID: 8191132950549994773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tank 3
+      rect:
+        serializedVersion: 2
+        x: 1593
+        y: 1279
+        width: 142
+        height: 234
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d99580c9a2b6a730800000000000000
+      internalID: 4010088960369203666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall Window
+      rect:
+        serializedVersion: 2
+        x: 1307
+        y: 1526
+        width: 213
+        height: 254
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f86287074e8cf770800000000000000
+      internalID: 8645941820364318964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat Hole
+      rect:
+        serializedVersion: 2
+        x: 1336
+        y: 1790
+        width: 137
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92f8cd2e82fec4490800000000000000
+      internalID: -7760565098982371543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall Hatch
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 1801
+        width: 133
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3f334979b42e4bb0800000000000000
+      internalID: -4949978561411596485
       vertices: []
       indices: 
       edges: []
