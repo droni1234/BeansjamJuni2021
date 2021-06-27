@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
 public class Rat : MonoBehaviour
 {
     public float moveSpeed = 3f;
@@ -20,6 +21,7 @@ public class Rat : MonoBehaviour
 
     public RatWaypoint currentWaypoint;
 
+    private Animator _animator;
     private Rigidbody2D _body;
     private RatState _state;
     private float _delayTime;
@@ -27,6 +29,7 @@ public class Rat : MonoBehaviour
 
     private void Start()
     {
+        _animator = GetComponent<Animator>();
         _body = GetComponent<Rigidbody2D>();
         SetState(RatState.Idle);
         _delayTime = 0.0f;
@@ -34,6 +37,8 @@ public class Rat : MonoBehaviour
 
     void Update()
     {
+        Vector2 motion = Vector2.zero;
+        
         if (_state == RatState.Idle)
         {
             _delayTime += Time.deltaTime;
@@ -44,27 +49,29 @@ public class Rat : MonoBehaviour
                 _delayTime = 0.0f;
             }
 
+            UpdateAnimation(motion);
             return;
         }
 
         if (_state == RatState.Turning)
         {
-            var toTarget = currentWaypoint.transform.position - transform.position;
-            if (Math.Abs(toTarget.x) > Math.Abs(toTarget.y))
-            {
-                var rotation = transform.localRotation;
-                rotation.z = -90;
-                transform.localRotation = rotation;
-            }
-            else
-            {
-                var rotation = transform.localRotation;
-                rotation.z = 0;
-                transform.localRotation = rotation;
-            }
+            // var toTarget = currentWaypoint.transform.position - transform.position;
+            // if (Math.Abs(toTarget.x) > Math.Abs(toTarget.y))
+            // {
+            //     var rotation = transform.localRotation;
+            //     rotation.z = -90;
+            //     transform.localRotation = rotation;
+            // }
+            // else
+            // {
+            //     var rotation = transform.localRotation;
+            //     rotation.z = 0;
+            //     transform.localRotation = rotation;
+            // }
 
             SetState(RatState.Moving);
 
+            UpdateAnimation(motion);
             return;
         }
 
@@ -74,10 +81,12 @@ public class Rat : MonoBehaviour
             if (toTarget.magnitude > 0.1f)
             {
                 var position = _body.position;
-                _body.position = position + toTarget.normalized * (moveSpeed * Time.deltaTime);
+                motion = toTarget.normalized * moveSpeed;
+                _body.position = position + motion * Time.deltaTime;
             }
             else
             {
+                motion = (Vector2) currentWaypoint.transform.position - _body.position;
                 _body.position = currentWaypoint.transform.position;
                 
                 if (currentWaypoint.nextPoint)
@@ -91,6 +100,7 @@ public class Rat : MonoBehaviour
                 }
             }
 
+            UpdateAnimation(motion);
             return;
         }
 
@@ -113,6 +123,7 @@ public class Rat : MonoBehaviour
                 SetState(RatState.Idle);
             }
 
+            UpdateAnimation(motion);
             return;
         }
 
@@ -127,7 +138,15 @@ public class Rat : MonoBehaviour
                 _delayTime = 0.0f;
                 SetState(RatState.Idle);
             }
+            UpdateAnimation(motion);
         }
+    }
+
+    private void UpdateAnimation(Vector2 motion)
+    {
+        Debug.Log(motion);
+        _animator.SetFloat("DX", motion.x);
+        _animator.SetFloat("DY", motion.y);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
