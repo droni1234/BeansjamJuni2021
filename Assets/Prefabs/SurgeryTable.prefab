@@ -416,9 +416,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickup: {fileID: 0}
-  minAlpha: 0.5
+  minAlpha: 1
   maxAlpha: 1
-  alphaChange: 0.5
+  alphaChange: 0
   actionCost: 3
 --- !u!114 &325111958006222454
 MonoBehaviour:
