@@ -7,6 +7,7 @@ public class MenuController : MonoBehaviour
     public bool menuVisible = true;
     public bool gameInProgress = false;
     public PauseManager pauseManager;
+    public int gameScene = 2;
     
     void Start()
     {
@@ -52,12 +53,12 @@ public class MenuController : MonoBehaviour
     {
         menuVisible = true;
         gameInProgress = false;
-        SceneManager.UnloadSceneAsync(1);
+        SceneManager.UnloadSceneAsync(gameScene);
     }
 
     public void ReloadScene(Scene current)
     {
-        SceneManager.LoadScene(1, LoadSceneMode.Additive);
+        SceneManager.LoadScene(gameScene, LoadSceneMode.Additive);
     }
     
     public void QuitGame()
