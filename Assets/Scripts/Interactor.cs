@@ -36,6 +36,7 @@ public class Interactor : MonoBehaviour
             SurgeryTable surgeryTable = _currentInteractable.GetComponent<SurgeryTable>();
             TeslaCoil teslaCoil = _currentInteractable.GetComponent<TeslaCoil>();
             Rat rat = _currentInteractable.GetComponent<Rat>();
+            SmartRats smartRats = _currentInteractable.GetComponent<SmartRats>();
             LeverLogic leverLogic = _currentInteractable.GetComponent<LeverLogic>();
             Spawn bodyPartsSpawn = _currentInteractable.GetComponent<Spawn>();
 
@@ -43,7 +44,11 @@ public class Interactor : MonoBehaviour
             {
                 Instantiate(ratDead, rat.transform.position, Quaternion.identity);
                 Destroy(rat.gameObject);
-                
+            }
+            else if (smartRats)
+            {
+                Instantiate(ratDead, smartRats.transform.position, Quaternion.identity);
+                Destroy(smartRats.gameObject);
             }
             else if (_currentInteractable.pickup)
             {

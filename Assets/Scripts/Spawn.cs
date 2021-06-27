@@ -7,7 +7,7 @@ public class Spawn : MonoBehaviour
 
     public GameObject[] possibleSpawns;
 
-    private GameObject bodyPart;
+    public GameObject bodyPart;
 
     public void SpawnRandomBodyPart ()
     {

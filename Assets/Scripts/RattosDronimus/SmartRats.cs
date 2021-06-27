@@ -1,0 +1,35 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Collider2D))]
+public class SmartRats : MonoBehaviour
+{
+
+    private Animator animator;
+    private Rigidbody2D rigidbody2d;
+
+    private Vector2 lastPosition = Vector2.zero;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+        rigidbody2d = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        print(lastPosition - new Vector2(transform.position.x, transform.position.y));
+        UpdateAnimation(lastPosition - new Vector2(transform.position.x, transform.position.y));
+        //UpdateAnimation(rigidbody2d.velocity);
+        lastPosition = transform.position;
+    }
+
+    private void UpdateAnimation(Vector2 motion)
+    {
+        animator.SetFloat("DX", motion.x);
+        animator.SetFloat("DY", motion.y);
+    }
+}
