@@ -15,12 +15,6 @@ public class SurgeryTable : MonoBehaviour
         _audio = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void AddPart(BodyPart bodyPart)
     {
         foreach (BodyPartSlot slot in slots)

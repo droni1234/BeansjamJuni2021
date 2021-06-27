@@ -26,35 +26,37 @@ public class MoveAround : MonoBehaviour
         var dT = Time.deltaTime;
         var moved = false;
         var state = _animState;
-        if (Input.GetKey(KeyCode.LeftArrow))
+        float xAxis = Input.GetAxisRaw("Horizontal");
+        float yAxis = Input.GetAxisRaw("Vertical");
+        if (xAxis < 0)
         {
             var transformPosition = _body.position;
-            transformPosition.x -= speed * dT;
+            transformPosition.x += speed * dT * xAxis;
             _body.position = transformPosition;
             state = "Left";
             moved = true;
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (xAxis > 0)
         {
             var transformPosition = _body.position;
-            transformPosition.x += speed * dT;
+            transformPosition.x += speed * dT * xAxis;
             _body.position = transformPosition;
             state = "Right";
             moved = true;
         }
         
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (yAxis > 0)
         {
             var transformPosition = _body.position;
-            transformPosition.y += speed * dT;
+            transformPosition.y += speed * dT * yAxis;
             _body.position = transformPosition;
             state = "Away";
             moved = true;
         }
-        else if (Input.GetKey(KeyCode.DownArrow))
+        else if (yAxis < 0)
         {
             var transformPosition = _body.position;
-            transformPosition.y -= speed * dT;
+            transformPosition.y += speed * dT * yAxis;
             _body.position = transformPosition;
             state = "Towards";
             moved = true;
@@ -78,7 +80,7 @@ public class MoveAround : MonoBehaviour
 
         if (!_animState.Equals(state))
         {
-            Debug.Log("Setting state: " + state);
+            //Debug.Log("Setting state: " + state);
             _animState = state;
             _animator.SetBool(_animState, true);
 

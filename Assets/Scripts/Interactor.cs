@@ -8,8 +8,7 @@ public class Interactor : MonoBehaviour
     public Slider progressSlider;
     public GameObject ratDead;
 
-    private float _progress = 0.0f;
-    private GameObject _currentInteractable;
+    private Interactable _currentInteractable;
     private GameObject _carry;
 
     void Start()
@@ -18,69 +17,39 @@ public class Interactor : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetButtonDown("Cancel"))
         {
             Application.Quit();
         }
 
-        if (_progress <= 0.0f)
+
+        if (Input.GetKey(KeyCode.Space) && _currentInteractable)
         {
-            _progress += actionProgressPerSecond * Time.deltaTime;
-        }
-        
-        if (_progress <= 0.05f)
-        {
-            progressSlider.transform.gameObject.SetActive(false);
-        }
-        else
-        {
-            progressSlider.transform.gameObject.SetActive(true);
-        }
 
-        if (Input.GetKey(KeyCode.Space))
-        {
-            if (!_currentInteractable)
-            {
-                return;
-            }
+            SurgeryTable surgeryTable = _currentInteractable.GetComponent<SurgeryTable>();
+            TeslaCoil teslaCoil = _currentInteractable.GetComponent<TeslaCoil>();
+            Rat rat = _currentInteractable.GetComponent<Rat>();
+            LeverLogic leverLogic = _currentInteractable.GetComponent<LeverLogic>();
+            Spawn bodyPartsSpawn = _currentInteractable.GetComponent<Spawn>();
 
-            var interactable = _currentInteractable.GetComponent<Interactable>();
-            if (!interactable)
-            {
-                return;
-            }
-
-            _progress += actionProgressPerSecond * Time.deltaTime;
-            progressSlider.value = _progress / interactable.actionCost;
-
-            if (_progress < interactable.actionCost)
-            {
-                return;
-            }
-
-            var surgeryTable = _currentInteractable.GetComponent<SurgeryTable>();
-            var teslaCoil = _currentInteractable.GetComponent<TeslaCoil>();
-            var rat = _currentInteractable.GetComponent<Rat>();
             if (rat)
             {
                 Instantiate(ratDead, rat.transform.position, Quaternion.identity);
                 Destroy(rat.gameObject);
                 
-                _progress = 0.0f;
             }
-            else if (interactable.pickup)
+            else if (_currentInteractable.pickup)
             {
                 DestroyCarriedBodyPart();
 
                 _carry = Instantiate(
-                    interactable.pickup,
+                    _currentInteractable.pickup,
                     pickupPosition.position,
-                    interactable.pickup.transform.rotation,
+                    _currentInteractable.pickup.transform.rotation,
                     transform
                 );
 
-                _carry.transform.localScale = interactable.pickup.transform.localScale;
-                _progress = -0.25f;
+                _carry.transform.localScale = _currentInteractable.pickup.transform.localScale;
             }
             else if (surgeryTable && _carry)
             {
@@ -93,18 +62,22 @@ public class Interactor : MonoBehaviour
                 surgeryTable.AddPart(bodyPart);
                 DestroyCarriedBodyPart();
                 _carry = null;
-                _progress = -0.25f;
             }
             else if (teslaCoil)
             {
                 surgeryTable = FindObjectOfType<SurgeryTable>();
                 teslaCoil.Zap(surgeryTable);
-                _progress = -0.25f;
             }
-        }
-        else
-        {
-            _progress = 0.0f;
+
+            if (leverLogic)
+            {
+                leverLogic.PullLever();
+            }
+
+            if (bodyPartsSpawn)
+            {
+                bodyPartsSpawn.CleanUp();
+            }
         }
     }
 
@@ -124,6 +97,6 @@ public class Interactor : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        _currentInteractable = other.gameObject;
+        _currentInteractable = other.GetComponent<Interactable>();
     }
 }
