@@ -532,10 +532,10 @@ TextureImporter:
       name: Crate 4
       rect:
         serializedVersion: 2
-        x: 656
+        x: 655
         y: 1243
         width: 183
-        height: 217
+        height: 226
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
