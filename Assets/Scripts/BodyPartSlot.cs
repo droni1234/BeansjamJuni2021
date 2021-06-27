@@ -22,7 +22,7 @@ public class BodyPartSlot : MonoBehaviour
         _part = Instantiate(
             bodyPart,
             transform.position,
-            bodyPart.transform.rotation,
+            bodyPart.getTableRotation(),
             transform
         );
 

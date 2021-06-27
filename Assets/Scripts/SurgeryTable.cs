@@ -14,11 +14,6 @@ public class SurgeryTable : MonoBehaviour
         _audio = GetComponent<AudioSource>();
     }
 
-    void Update()
-    {
-        
-    }
-
     public void AddPart(BodyPart bodyPart)
     {
         foreach (BodyPartSlot slot in slots)
