@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(Pausable))]
 public class TeslaCoil : MonoBehaviour
 {
     public SurgeryTable surgeryTable;
@@ -12,13 +13,20 @@ public class TeslaCoil : MonoBehaviour
     public TextMeshPro txt;
 
     private bool _won = false;
+    private Pausable _pause;
     
     void Start()
     {
+        _pause = GetComponent<Pausable>();
     }
 
     void Update()
     {
+        if (_pause.Paused)
+        {
+            return;
+        }
+        
         if (energyPercentage < overChargePercentage)
         {
             energyPercentage += energyPercentagePerSecond * Time.deltaTime;

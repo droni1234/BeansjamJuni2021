@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,7 +14,6 @@ public class SurgeryTable : MonoBehaviour
         _audio = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -41,8 +39,6 @@ public class SurgeryTable : MonoBehaviour
             {
                 count++;
             }
-            
-            slot.ClearSlot();
         }
 
         if (count == 6 && energyPercentage >= 100.0f)
@@ -56,6 +52,7 @@ public class SurgeryTable : MonoBehaviour
         {
             _audio.clip = failClip;
             _audio.Play();
+            ZapRandom();
             Debug.Log("OOOPS!!!");
             return false;
         }

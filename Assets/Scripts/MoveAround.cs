@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Pausable))]
 public class MoveAround : MonoBehaviour
 {
     public float speed = 1.0f;
@@ -10,19 +9,25 @@ public class MoveAround : MonoBehaviour
     private Animator _animator;
     private Rigidbody2D _body;
     private string _animState = "Stay";
+    private Pausable _pause;
     
     void Start()
     {
         _audio = GetComponent<AudioSource>();
         _animator = GetComponent<Animator>();
         _body = GetComponent<Rigidbody2D>();
+        _pause = GetComponent<Pausable>();
         
         _animator.SetBool(_animState, true);
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (_pause.Paused)
+        {
+            return;
+        }
+        
         var dT = Time.deltaTime;
         var moved = false;
         var state = _animState;
@@ -78,7 +83,7 @@ public class MoveAround : MonoBehaviour
 
         if (!_animState.Equals(state))
         {
-            Debug.Log("Setting state: " + state);
+            // Debug.Log("Setting state: " + state);
             _animState = state;
             _animator.SetBool(_animState, true);
 

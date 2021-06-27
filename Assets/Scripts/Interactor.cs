@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Pausable))]
 public class Interactor : MonoBehaviour
 {
     public float actionProgressPerSecond = 1.0f;
@@ -11,18 +12,20 @@ public class Interactor : MonoBehaviour
     private float _progress = 0.0f;
     private GameObject _currentInteractable;
     private GameObject _carry;
+    private Pausable _pause;
 
     void Start()
     {
+        _pause = GetComponent<Pausable>();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (_pause.Paused)
         {
-            Application.Quit();
+            return;
         }
-
+        
         if (_progress <= 0.0f)
         {
             _progress += actionProgressPerSecond * Time.deltaTime;

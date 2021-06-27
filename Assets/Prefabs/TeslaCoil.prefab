@@ -153,8 +153,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca67e6ee610e4084dbb133e3b1e2f852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energyPercentage: 30
-  energyPercentagePerSecond: 1
+  surgeryTable: {fileID: 0}
+  energyPercentage: 10
+  energyPercentagePerSecond: 1.5
+  overChargePercentage: 120
+  overChargeMinus: 40
   txt: {fileID: 4716470028053589893}
 --- !u!114 &4716470027948915191
 MonoBehaviour:
@@ -172,6 +175,7 @@ MonoBehaviour:
   minAlpha: 0.7
   maxAlpha: 1
   alphaChange: 0.2
+  actionCost: 0
 --- !u!1 &4716470028053589894
 GameObject:
   m_ObjectHideFlags: 0

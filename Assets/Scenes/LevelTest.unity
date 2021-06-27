@@ -2128,6 +2128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1926341703}
   - component: {fileID: 1926341702}
+  - component: {fileID: 1926341704}
   m_Layer: 0
   m_Name: Rat spawn manager
   m_TagString: Untagged
@@ -2171,6 +2172,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1926341704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926341701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e471e2c1d2a14e5f8ac08cc9297d5f56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Paused: 1
 --- !u!1001 &1961299633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2853,14 +2867,6 @@ PrefabInstance:
       propertyPath: surgeryTable
       value: 
       objectReference: {fileID: 812340521}
-    - target: {fileID: 4716470027948915196, guid: ed52425660717f042b38775f6eaba232, type: 3}
-      propertyPath: energyPercentage
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4716470027948915196, guid: ed52425660717f042b38775f6eaba232, type: 3}
-      propertyPath: energyPercentagePerSecond
-      value: 1.3
-      objectReference: {fileID: 0}
     - target: {fileID: 4716470027948915197, guid: ed52425660717f042b38775f6eaba232, type: 3}
       propertyPath: m_Name
       value: TeslaCoil
@@ -2907,63 +2913,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed52425660717f042b38775f6eaba232, type: 3}
---- !u!1001 &5104031596678771836
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5104031595569707236, guid: 355888423d5edb543ad2f961491f1eba, type: 3}
-      propertyPath: m_RootOrder
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5104031595569707236, guid: 355888423d5edb543ad2f961491f1eba, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.3629086
-      objectReference: {fileID: 0}
-    - target: {fileID: 5104031595569707236, guid: 355888423d5edb543ad2f961491f1eba, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.8134551
-      objectReference: {fileID: 0}
-    - target: {fileID: 5104031595569707236, guid: 355888423d5edb543ad2f961491f1eba, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -8.279931
-      objectReference: {fileID: 0}
-    - target: {fileID: 5104031595569707236, guid: 355888423d5edb543ad2f961491f1eba, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5104031595569707236, guid: 355888423d5edb543ad2f961491f1eba, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5104031595569707236, guid: 355888423d5edb543ad2f961491f1eba, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5104031595569707236, guid: 355888423d5edb543ad2f961491f1eba, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5104031595569707236, guid: 355888423d5edb543ad2f961491f1eba, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5104031595569707236, guid: 355888423d5edb543ad2f961491f1eba, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5104031595569707236, guid: 355888423d5edb543ad2f961491f1eba, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5104031595569707242, guid: 355888423d5edb543ad2f961491f1eba, type: 3}
-      propertyPath: m_Name
-      value: RatDead
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 355888423d5edb543ad2f961491f1eba, type: 3}
 --- !u!1001 &5667526492062017124
 PrefabInstance:
   m_ObjectHideFlags: 0

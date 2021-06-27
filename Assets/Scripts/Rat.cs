@@ -1,8 +1,8 @@
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Pausable))]
 public class Rat : MonoBehaviour
 {
     public float moveSpeed = 3f;
@@ -26,17 +26,26 @@ public class Rat : MonoBehaviour
     private RatState _state;
     private float _delayTime;
     private SurgeryTable _surgeryTable;
+    private Pausable _pause;
+
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
         _body = GetComponent<Rigidbody2D>();
+        _pause = GetComponent<Pausable>();
+        
         SetState(RatState.Idle);
         _delayTime = 0.0f;
     }
 
     void Update()
     {
+        if (_pause.Paused)
+        {
+            return;
+        }
+        
         Vector2 motion = Vector2.zero;
         
         if (_state == RatState.Idle)
@@ -55,20 +64,6 @@ public class Rat : MonoBehaviour
 
         if (_state == RatState.Turning)
         {
-            // var toTarget = currentWaypoint.transform.position - transform.position;
-            // if (Math.Abs(toTarget.x) > Math.Abs(toTarget.y))
-            // {
-            //     var rotation = transform.localRotation;
-            //     rotation.z = -90;
-            //     transform.localRotation = rotation;
-            // }
-            // else
-            // {
-            //     var rotation = transform.localRotation;
-            //     rotation.z = 0;
-            //     transform.localRotation = rotation;
-            // }
-
             SetState(RatState.Moving);
 
             UpdateAnimation(motion);

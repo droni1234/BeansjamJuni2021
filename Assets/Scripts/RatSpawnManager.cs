@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Pausable))]
 public class RatSpawnManager : MonoBehaviour
 {
     public float spawnDelayMin = 5f;
@@ -7,18 +8,25 @@ public class RatSpawnManager : MonoBehaviour
     public RatWaypoint[] spawns;
     public int[] spawnsBeforeLevel;
     public GameObject ratPrefab;
-
-    private float _delay = 0f;
     public int ratLevel = 0;
     public int spawned = 0;
     
+    private float _delay = 0f;
+    private Pausable _pause;
+    
     void Start()
     {
+        _pause = GetComponent<Pausable>();
         _delay = Random.Range(spawnDelayMin, spawnDelayMax);
     }
 
     void Update()
     {
+        if (_pause.Paused)
+        {
+            return;
+        }
+        
         _delay -= Time.deltaTime;
 
         if (_delay <= 0.0f)
@@ -26,7 +34,7 @@ public class RatSpawnManager : MonoBehaviour
             _delay = Random.Range(spawnDelayMin, spawnDelayMax);
 
             RatWaypoint spawnPoint = spawns[Random.Range(0, ratLevel + 1)];
-            var rat = Instantiate(ratPrefab, spawnPoint.transform.position, Quaternion.identity);
+            var rat = Instantiate(ratPrefab, spawnPoint.transform.position, Quaternion.identity, transform);
             rat.GetComponent<Rat>().currentWaypoint = spawnPoint.nextPoint;
             spawned++;
         }

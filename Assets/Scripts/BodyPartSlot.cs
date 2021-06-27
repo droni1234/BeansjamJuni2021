@@ -9,12 +9,10 @@ public class BodyPartSlot : MonoBehaviour
     
     void Start()
     {
-        
     }
 
     void Update()
     {
-        
     }
 
     public void SetBodyPart(BodyPart bodyPart)
