@@ -38,6 +38,9 @@ TextureImporter:
   - first:
       213: -794499791608249842
     second: Tesla coil
+  - first:
+      213: -106784441488025999
+    second: Lever device
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -261,7 +264,7 @@ TextureImporter:
         width: 246
         height: 262
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -282,7 +285,7 @@ TextureImporter:
         width: 130
         height: 60
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -303,7 +306,7 @@ TextureImporter:
         width: 215
         height: 173
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -324,7 +327,7 @@ TextureImporter:
         width: 164
         height: 119
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -345,7 +348,7 @@ TextureImporter:
         width: 167
         height: 121
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -366,7 +369,7 @@ TextureImporter:
         width: 254
         height: 493
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -374,6 +377,27 @@ TextureImporter:
       bones: []
       spriteID: e02811326ae59f4f0800000000000000
       internalID: -794499791608249842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lever device
+      rect:
+        serializedVersion: 2
+        x: 1099
+        y: 1576
+        width: 170
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1765191cd10a48ef0800000000000000
+      internalID: -106784441488025999
       vertices: []
       indices: 
       edges: []
