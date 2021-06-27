@@ -20,6 +20,24 @@ TextureImporter:
   - first:
       213: -2427619625214532881
     second: BodyPart Leg
+  - first:
+      213: 6235771940369058031
+    second: Charge device
+  - first:
+      213: 3008841243720107749
+    second: Charge Meter
+  - first:
+      213: -1470831595647383799
+    second: Door Frame
+  - first:
+      213: 7315702215477763890
+    second: Door Background dark
+  - first:
+      213: 6461065692916885802
+    second: Door background lighted
+  - first:
+      213: -794499791608249842
+    second: Tesla coil
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -230,6 +248,132 @@ TextureImporter:
       bones: []
       spriteID: fe2225d10dc5f4ed0800000000000000
       internalID: -2427619625214532881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Charge device
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 1777
+        width: 246
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe8cb0e8a89e98650800000000000000
+      internalID: 6235771940369058031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Charge Meter
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 1701
+        width: 130
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e64b7d6b2d81c920800000000000000
+      internalID: 3008841243720107749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door Frame
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 1868
+        width: 215
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9074401e47e869be0800000000000000
+      internalID: -1470831595647383799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door Background dark
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 1923
+        width: 164
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23f171c9768968560800000000000000
+      internalID: 7315702215477763890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door background lighted
+      rect:
+        serializedVersion: 2
+        x: 1484
+        y: 1923
+        width: 167
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2926c8f3015aa950800000000000000
+      internalID: 6461065692916885802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tesla coil
+      rect:
+        serializedVersion: 2
+        x: 1660
+        y: 1551
+        width: 254
+        height: 493
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e02811326ae59f4f0800000000000000
+      internalID: -794499791608249842
       vertices: []
       indices: 
       edges: []
