@@ -6,12 +6,14 @@ public class MoveAround : MonoBehaviour
 {
     public float speed = 1.0f;
 
+    private AudioSource _audio;
     private Animator _animator;
     private Rigidbody2D _body;
     private string _animState = "Stay";
     
     void Start()
     {
+        _audio = GetComponent<AudioSource>();
         _animator = GetComponent<Animator>();
         _body = GetComponent<Rigidbody2D>();
         
@@ -61,6 +63,17 @@ public class MoveAround : MonoBehaviour
         if (!moved)
         {
             state = "Stay";
+            
+            _audio.loop = false;
+            _audio.Stop();
+        }
+        else
+        {
+            if (!_audio.loop)
+            {
+                _audio.loop = true;
+                _audio.Play();
+            }
         }
 
         if (!_animState.Equals(state))

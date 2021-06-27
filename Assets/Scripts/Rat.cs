@@ -144,7 +144,6 @@ public class Rat : MonoBehaviour
 
     private void UpdateAnimation(Vector2 motion)
     {
-        Debug.Log(motion);
         _animator.SetFloat("DX", motion.x);
         _animator.SetFloat("DY", motion.y);
     }

@@ -16,6 +16,8 @@ public class CastleGate : MonoBehaviour
     {
         people = 0;
         _audio = GetComponent<AudioSource>();
+        _audio.clip = clips[people];
+        _audio.Play();
     }
 
     void Update()

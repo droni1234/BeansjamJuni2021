@@ -6,6 +6,7 @@ public class Interactor : MonoBehaviour
     public float actionProgressPerSecond = 1.0f;
     public Transform pickupPosition;
     public Slider progressSlider;
+    public GameObject ratDead;
 
     private float _progress = 0.0f;
     private GameObject _currentInteractable;
@@ -62,7 +63,9 @@ public class Interactor : MonoBehaviour
             var rat = _currentInteractable.GetComponent<Rat>();
             if (rat)
             {
+                Instantiate(ratDead, rat.transform.position, Quaternion.identity);
                 Destroy(rat.gameObject);
+                
                 _progress = 0.0f;
             }
             else if (interactable.pickup)
