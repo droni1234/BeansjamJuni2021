@@ -33,7 +33,6 @@ public class RatBodyPartRoutine : MonoBehaviour
         }
         else if (coolDownTimer <= 0.0F)
         {
-            coolDownTimer = coolDown;
             AquireNewTarget();
             if(currentTarget)
                 SpawnRat();
@@ -57,6 +56,7 @@ public class RatBodyPartRoutine : MonoBehaviour
     {
         if (Vector2.Distance(rat.transform.position, currentTarget.transform.position) < tolerance)
         {
+            coolDownTimer = coolDown;
             currentTarget.CleanUp();
             Destroy(rat.gameObject);
         }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LeverLogic : MonoBehaviour
+public class SpawnLeverLogic : MonoBehaviour
 {
 
     public float coolDown = 20F;

@@ -34,7 +34,8 @@ public class CastleGate : MonoBehaviour
             people = 0;
             _audio.clip = clips[people];
             _audio.Play();
-            mobAudioSource.Play();
+            if(mobAudioSource)
+                mobAudioSource.Play();
             return;
         }
         

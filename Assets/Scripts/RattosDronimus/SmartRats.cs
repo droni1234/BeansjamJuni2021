@@ -21,8 +21,7 @@ public class SmartRats : MonoBehaviour
 
     private void Update()
     {
-        print(lastPosition - new Vector2(transform.position.x, transform.position.y));
-        UpdateAnimation(lastPosition - new Vector2(transform.position.x, transform.position.y));
+        UpdateAnimation(new Vector2(transform.position.x, transform.position.y) - lastPosition);
         //UpdateAnimation(rigidbody2d.velocity);
         lastPosition = transform.position;
     }

@@ -37,7 +37,7 @@ public class Interactor : MonoBehaviour
             TeslaCoil teslaCoil = _currentInteractable.GetComponent<TeslaCoil>();
             Rat rat = _currentInteractable.GetComponent<Rat>();
             SmartRats smartRats = _currentInteractable.GetComponent<SmartRats>();
-            LeverLogic leverLogic = _currentInteractable.GetComponent<LeverLogic>();
+            SpawnLeverLogic leverLogic = _currentInteractable.GetComponent<SpawnLeverLogic>();
             Spawn bodyPartsSpawn = _currentInteractable.GetComponent<Spawn>();
 
             if (rat)

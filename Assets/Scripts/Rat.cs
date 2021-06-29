@@ -58,15 +58,13 @@ public class Rat : MonoBehaviour
                 _delayTime = 0.0f;
             }
 
-            UpdateAnimation(motion);
+            
             return;
         }
 
         if (_state == RatState.Turning)
         {
             SetState(RatState.Moving);
-
-            UpdateAnimation(motion);
             return;
         }
 
@@ -117,8 +115,6 @@ public class Rat : MonoBehaviour
             {
                 SetState(RatState.Idle);
             }
-
-            UpdateAnimation(motion);
             return;
         }
 
@@ -133,7 +129,6 @@ public class Rat : MonoBehaviour
                 _delayTime = 0.0f;
                 SetState(RatState.Idle);
             }
-            UpdateAnimation(motion);
         }
     }
 
