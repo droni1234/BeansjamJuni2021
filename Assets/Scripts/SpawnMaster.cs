@@ -12,8 +12,14 @@ public class SpawnMaster : MonoBehaviour
             Spawn spawn = child.GetComponent<Spawn>();
             if (spawn)
             {
-                spawn.SpawnRandomBodyPart();
+                StartCoroutine(DelaySpawn(spawn));
             }
         }
+    }
+
+    private IEnumerator DelaySpawn(Spawn spawn)
+    {
+        yield return new WaitForSeconds(Random.Range(0.2F,1.0F));
+        spawn.SpawnRandomBodyPart();
     }
 }

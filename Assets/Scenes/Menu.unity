@@ -772,6 +772,7 @@ MonoBehaviour:
   gameInProgress: 0
   pauseManager: {fileID: 1811264851}
   gameScene: 2
+  endScreen: 0
 --- !u!4 &425230591
 Transform:
   m_ObjectHideFlags: 0
@@ -1294,7 +1295,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -8613274380344650134, guid: ca6e9153e6b8e6c44a8d9864fc44d955, type: 2}
   m_audioClip: {fileID: 8300000, guid: 625fbfc9b4fb039459c019da6c156f33, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2486,7 +2487,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -8600339683566226057, guid: ca6e9153e6b8e6c44a8d9864fc44d955, type: 2}
   m_audioClip: {fileID: 8300000, guid: c6abd694413c5d54fb0d2ff35a8c97c0, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.43
   m_Pitch: 1
   Loop: 1
   Mute: 0

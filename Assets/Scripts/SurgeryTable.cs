@@ -8,10 +8,32 @@ public class SurgeryTable : MonoBehaviour
     public AudioClip failClip;
 
     private AudioSource _audio;
+
+    private bool winOnce = false;
     
     void Start()
     {
         _audio = GetComponent<AudioSource>();
+    }
+
+    private void Update()
+    {
+        int count = 0;
+        foreach (BodyPartSlot slot in slots)
+        {
+            if (slot.HasBodyPart())
+            {
+                count++;
+            }
+        }
+        if (count == 6 && !winOnce)
+        {
+            winOnce = true;
+            _audio.clip = victoryClips[Random.Range(0, victoryClips.Length)];
+            _audio.Play();
+            Debug.Log("You win!!!");
+            FindObjectOfType<MenuController>().Victory();
+        }
     }
 
     public void AddPart(BodyPart bodyPart)
@@ -49,7 +71,7 @@ public class SurgeryTable : MonoBehaviour
             _audio.clip = failClip;
             _audio.Play();
             ZapRandom();
-            Debug.Log("OOOPS!!!");
+            //Debug.Log("OOOPS!!!");
             return false;
         }
     }

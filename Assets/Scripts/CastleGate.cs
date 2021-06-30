@@ -64,7 +64,7 @@ public class CastleGate : MonoBehaviour
 
         if (people == 10)
         {
-            FindObjectOfType<MenuController>().EndGame();
+            FindObjectOfType<MenuController>().Defeat();
             // TODO: Lose!!!
             Debug.Log("You lose!");
         }

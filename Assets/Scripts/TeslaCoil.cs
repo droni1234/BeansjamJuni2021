@@ -44,6 +44,7 @@ public class TeslaCoil : MonoBehaviour
         }
         else
         {
+            GetComponent<AudioSource>().Play();
             surgeryTable.ZapRandom();
             energyPercentage -= overChargeMinus;
         }
@@ -67,7 +68,7 @@ public class TeslaCoil : MonoBehaviour
         if (!_won && surgeryTable)
         {
             _won = surgeryTable.Zap(energyPercentage);
-            energyPercentage = 0.0f;
+            //energyPercentage = 0.0f;
         }
     }
 

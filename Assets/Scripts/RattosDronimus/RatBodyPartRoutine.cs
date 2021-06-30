@@ -36,6 +36,7 @@ public class RatBodyPartRoutine : MonoBehaviour
             AquireNewTarget();
             if(currentTarget)
                 SpawnRat();
+            coolDownTimer = coolDown;
         }
 
         coolDownTimer -= Time.deltaTime;

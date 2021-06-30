@@ -8,10 +8,11 @@ public class MenuController : MonoBehaviour
     public bool gameInProgress = false;
     public PauseManager pauseManager;
     public int gameScene = 2;
+    public bool endScreen = false;
     
-    void Start()
+    void Awake()
     {
-        SceneManager.sceneUnloaded += ReloadScene;
+        //SceneManager.sceneUnloaded += ReloadScene;
         ReloadScene(SceneManager.GetActiveScene());
     }
 
@@ -35,6 +36,11 @@ public class MenuController : MonoBehaviour
         {
             menuCanvas.gameObject.SetActive(menuVisible);
         }
+
+        if(endScreen && Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
     public void StartGame()
@@ -54,7 +60,7 @@ public class MenuController : MonoBehaviour
         pauseManager.Pause();
         menuVisible = true;
         gameInProgress = false;
-        SceneManager.UnloadSceneAsync(gameScene);
+        SceneManager.UnloadSceneAsync(gameScene, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
     }
 
     public void ReloadScene(Scene current)
@@ -69,8 +75,20 @@ public class MenuController : MonoBehaviour
 
     public void Victory()
     {
-        pauseManager.Pause();
-        menuVisible = true;
+        //EndGame();
+        SceneManager.UnloadSceneAsync(2);
+        SceneManager.LoadSceneAsync(3, LoadSceneMode.Additive);
+        endScreen = true;
+        menuVisible = false;
+    }
+
+    public void Defeat()
+    {
+        //EndGame();
+        SceneManager.UnloadSceneAsync(2);
+        SceneManager.LoadSceneAsync(4, LoadSceneMode.Additive);
+        endScreen = true;
+        menuVisible = false;
     }
 
     public void UnPauseAll()

@@ -33,6 +33,7 @@ public class SpawnLeverLogic : MonoBehaviour
         animator.SetBool("isDown", isPulled);
         if(time <= 0F)
         {
+            gameObject.GetComponentInChildren<AudioSource>().Play();
             FindObjectOfType<SpawnMaster>().SpawnBodies();
             time = coolDown;
         }
