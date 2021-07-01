@@ -14,6 +14,9 @@ public class MenuController : MonoBehaviour
     {
         //SceneManager.sceneUnloaded += ReloadScene;
         ReloadScene(SceneManager.GetActiveScene());
+#if UNITY_WEBGL
+        Destroy(GameObject.Find("Exit"));
+#endif
     }
 
     void Update()
@@ -48,7 +51,9 @@ public class MenuController : MonoBehaviour
         if (gameInProgress)
         {
             EndGame();
+            SceneManager.LoadScene(gameScene, LoadSceneMode.Additive);
         }
+
         
         menuVisible = false;
         gameInProgress = true;

@@ -5,6 +5,7 @@ public class SurgeryTable : MonoBehaviour
 {
     public BodyPartSlot[] slots;
     public AudioClip[] victoryClips;
+    public AudioClip[] buildClips;
     public AudioClip failClip;
 
     private AudioSource _audio;
@@ -38,6 +39,9 @@ public class SurgeryTable : MonoBehaviour
 
     public void AddPart(BodyPart bodyPart)
     {
+        _audio.clip = buildClips[Random.Range(0, buildClips.Length)];
+        _audio.volume = 0.5F;
+        _audio.Play();
         foreach (BodyPartSlot slot in slots)
         {
             if (slot.forType == bodyPart.type)
