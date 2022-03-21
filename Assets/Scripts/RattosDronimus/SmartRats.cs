@@ -5,9 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
-public class SmartRats : MonoBehaviour
+public class SmartRats : Interactable
 {
 
+    [SerializeField]
+    private GameObject ratDead;
+    
     private Animator animator;
     private Rigidbody2D rigidbody2d;
 
@@ -30,5 +33,11 @@ public class SmartRats : MonoBehaviour
     {
         animator.SetFloat("DX", motion.x);
         animator.SetFloat("DY", motion.y);
+    }
+
+    public override void Trigger(Interactor interactor)
+    {
+        Instantiate(ratDead, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }

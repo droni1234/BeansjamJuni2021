@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnLeverLogic : MonoBehaviour
+public class SpawnLeverLogic : Interactable
 {
 
     public float coolDown = 20F;
@@ -31,12 +31,18 @@ public class SpawnLeverLogic : MonoBehaviour
     {
         isPulled = true;
         animator.SetBool("isDown", isPulled);
-        if(time <= 0F)
-        {
-            gameObject.GetComponentInChildren<AudioSource>().Play();
-            FindObjectOfType<SpawnMaster>().SpawnBodies();
-            time = coolDown;
-        }
+        
+        if (time > 0F)
+            return;
+        
+        gameObject.GetComponentInChildren<AudioSource>().Play();
+        FindObjectOfType<SpawnMaster>().SpawnBodies();
+        time = coolDown;
     }
 
+
+    public override void Trigger(Interactor interactor)
+    {
+        PullLever();
+    }
 }

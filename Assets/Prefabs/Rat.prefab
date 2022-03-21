@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 45665730353181960}
   - component: {fileID: 45665730353181972}
   - component: {fileID: 45665730353181975}
-  - component: {fileID: 6439935991236796156}
   - component: {fileID: 3741122213422423397}
+  - component: {fileID: 7740282296352741725}
   m_Layer: 13
   m_Name: Rat
   m_TagString: Untagged
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1196282195
-  m_SortingLayer: -3
+  m_SortingLayer: -5
   m_SortingOrder: 0
   m_Sprite: {fileID: 6000252970925195536, guid: 980559ebc3ec99f41a599dff4fb94ccb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -103,6 +103,7 @@ MonoBehaviour:
   idleDelay: 1
   stealingDelay: 2
   lookingDelay: 0.25
+  ratDead: {fileID: 5104031595569707242, guid: 355888423d5edb543ad2f961491f1eba, type: 3}
   currentWaypoint: {fileID: 0}
 --- !u!50 &45665730353181972
 Rigidbody2D:
@@ -139,21 +140,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.07206535}
-  m_Size: {x: 0.26333237, y: 0.43057728}
+  m_Size: {x: 1.08, y: 0.49}
   m_Direction: 0
---- !u!114 &6439935991236796156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 45665730353181963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9d2a6d54519a9346b13fcb34acb18f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pickup: {fileID: 0}
 --- !u!95 &3741122213422423397
 Animator:
   serializedVersion: 3
@@ -173,3 +161,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7740282296352741725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45665730353181963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e471e2c1d2a14e5f8ac08cc9297d5f56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

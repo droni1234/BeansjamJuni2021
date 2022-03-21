@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RatBodyPartRoutine : MonoBehaviour
 {
-    public Spawn[] targets;
+    public SpawnItem[] targets;
 
     [SerializeField]
     private SmartRats prefabRat;
@@ -14,7 +14,7 @@ public class RatBodyPartRoutine : MonoBehaviour
 
     public float coolDown = 5.0F;
 
-    private Spawn currentTarget;
+    private SpawnItem currentTarget;
     private SmartRats rat;
     
     private float startTime;
@@ -66,11 +66,11 @@ public class RatBodyPartRoutine : MonoBehaviour
     void AquireNewTarget()
     {
         currentTarget = targets[Random.Range(0, targets.Length)];
-        if (!currentTarget.bodyPart)
+        if (!currentTarget.pickup)
         {
-            foreach (Spawn spawn in targets)
+            foreach (SpawnItem spawn in targets)
             {
-                if (spawn.bodyPart)
+                if (spawn.pickup)
                 {
                     currentTarget = spawn;
                 }

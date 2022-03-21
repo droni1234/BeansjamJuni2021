@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Pausable))]
-public class TeslaCoil : MonoBehaviour
+public class TeslaCoil : Interactable
 {
     public SurgeryTable surgeryTable;
     public float energyPercentage = 30.0f;
@@ -26,14 +26,9 @@ public class TeslaCoil : MonoBehaviour
 
     private bool isPulled = false;
 
-    void Start()
+    private void Update()
     {
-        _pause = GetComponent<Pausable>();
-    }
-
-    void Update()
-    {
-        if (_pause.Paused)
+        if (GetComponent<Pausable>().Paused)
         {
             return;
         }
@@ -76,10 +71,17 @@ public class TeslaCoil : MonoBehaviour
     {
         isPulled = true;
         animator.SetBool("isDown", isPulled);
-        if (time <= 0F)
-        {
-            FindObjectOfType<SpawnMaster>().SpawnBodies();
-            time = coolDown;
-        }
+        
+        if (time > 0F) 
+            return;
+        
+        FindObjectOfType<SpawnMaster>().SpawnBodies();
+        time = coolDown;
+    }
+
+    public override void Trigger(Interactor interactor)
+    {
+        surgeryTable = FindObjectOfType<SurgeryTable>();
+        Zap(surgeryTable);
     }
 }

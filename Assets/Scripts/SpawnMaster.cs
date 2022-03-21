@@ -9,17 +9,17 @@ public class SpawnMaster : MonoBehaviour
     {
         foreach (Transform child in transform) 
         {
-            Spawn spawn = child.GetComponent<Spawn>();
-            if (spawn)
+            SpawnItem spawnItem = child.GetComponent<SpawnItem>();
+            if (spawnItem)
             {
-                StartCoroutine(DelaySpawn(spawn));
+                StartCoroutine(DelaySpawn(spawnItem));
             }
         }
     }
 
-    private IEnumerator DelaySpawn(Spawn spawn)
+    private static IEnumerator DelaySpawn(SpawnItem spawnItem)
     {
         yield return new WaitForSeconds(Random.Range(0.2F,1.0F));
-        spawn.SpawnRandomBodyPart();
+        spawnItem.SpawnRandomBodyPart();
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SurgeryTable : MonoBehaviour
+public class SurgeryTable : Interactable
 {
     public BodyPartSlot[] slots;
     public AudioClip[] victoryClips;
@@ -83,7 +83,7 @@ public class SurgeryTable : MonoBehaviour
     
     public void ZapRandom()
     {
-        var targetSlot = GetRandomSlot();
+        BodyPartSlot targetSlot = GetRandomSlot();
         if (targetSlot)
         {
             targetSlot.ClearSlot();
@@ -92,7 +92,7 @@ public class SurgeryTable : MonoBehaviour
 
     public void Steal(Transform thief)
     {
-        var targetSlot = GetRandomSlot();
+        BodyPartSlot targetSlot = GetRandomSlot();
         if (targetSlot)
         {
             var stolen = targetSlot.BodyPart;
@@ -118,5 +118,20 @@ public class SurgeryTable : MonoBehaviour
         }
 
         return parts[Random.Range(0, parts.Count)];
+    }
+
+    public override void Trigger(Interactor interactor)
+    {
+        BodyPart bodyPart = null;
+        if(interactor.carry)
+            bodyPart = interactor.carry.GetComponent<BodyPart>();
+        if (!bodyPart)
+        {
+            return;
+        }
+
+        AddPart(bodyPart);
+        interactor.DestroyCarriedBodyPart();
+        interactor.carry = null;
     }
 }
