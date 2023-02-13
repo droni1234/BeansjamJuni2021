@@ -40,7 +40,7 @@ public class MenuController : MonoBehaviour
             menuCanvas.gameObject.SetActive(menuVisible);
         }
 
-        if(endScreen && Input.GetKeyDown(KeyCode.Space))
+        if(endScreen && Input.GetButtonDown("Fire1") && !Input.GetButton("Jump"))
         {
             SceneManager.LoadScene(0);
         }

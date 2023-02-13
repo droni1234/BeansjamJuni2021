@@ -8,75 +8,76 @@ public class RatBodyPartRoutine : MonoBehaviour
 
     [SerializeField]
     private SmartRats prefabRat;
-    
-    [SerializeField]
-    private float speed = 1.0F;
 
     public float coolDown = 5.0F;
 
     private SpawnItem currentTarget;
     private SmartRats rat;
-    
-    private float startTime;
 
 
-    private float coolDownTimer = 0.0F;
+    private float spawnCoolDownTimer = 0.0F;
 
-    private float tolerance = 0.1F;
-
-    void Update()
+    private void Update()
     {
         if (rat)
-        { 
-            UpdateRatPosition();
-            TryEatTarget();
+        {
+
         }
-        else if (coolDownTimer <= 0.0F)
+        else if (spawnCoolDownTimer <= 0.0F && currentTarget)
+        {
+            SpawnRat();
+            spawnCoolDownTimer = coolDown;
+        }
+        else
         {
             AquireNewTarget();
-            if(currentTarget)
-                SpawnRat();
-            coolDownTimer = coolDown;
         }
 
-        coolDownTimer -= Time.deltaTime;
-    }
-
-    private void UpdateRatPosition()
-    {
-        //Long ass formular depending on speed and distance to item it will move accordingly
-        rat.GetComponent<Rigidbody2D>().position = Vector2.Lerp(transform.position, currentTarget.transform.position, (Time.time - startTime) * speed / Vector2.Distance(transform.position, currentTarget.transform.position));
+        spawnCoolDownTimer -= Time.deltaTime;
     }
 
     void SpawnRat()
     {
         rat = Instantiate(prefabRat, transform);
+        rat.OnTargetReached += OnTargetReachedBodyPart;
+        rat.setTarget(currentTarget.transform.position);
     }
 
-    void TryEatTarget()
+    private void OnTargetReachedBodyPart()
     {
-        if (Vector2.Distance(rat.transform.position, currentTarget.transform.position) < tolerance)
+        print("reached");
+        currentTarget.CleanUp();
+        if (currentTarget.pickup)
         {
-            coolDownTimer = coolDown;
-            currentTarget.CleanUp();
-            Destroy(rat.gameObject);
+            rat.item = Instantiate(
+                currentTarget.pickup, 
+                rat.transform.position, 
+                currentTarget.transform.rotation,
+                rat.transform);
         }
+        rat.OnTargetReached -= OnTargetReachedBodyPart;
+        rat.OnTargetReached += OnTargetReachedOrigin;
+        rat.setTarget(transform.position);
+    }
+
+    private void OnTargetReachedOrigin()
+    {
+        spawnCoolDownTimer = coolDown;
+        rat.OnTargetReached -= OnTargetReachedOrigin;
+        Destroy(rat.gameObject);
     }
 
     void AquireNewTarget()
     {
         currentTarget = targets[Random.Range(0, targets.Length)];
-        if (!currentTarget.pickup)
+        if (currentTarget.pickup) return;
+        foreach (SpawnItem spawn in targets)
         {
-            foreach (SpawnItem spawn in targets)
+            if (spawn.pickup)
             {
-                if (spawn.pickup)
-                {
-                    currentTarget = spawn;
-                }
+                currentTarget = spawn;
             }
-            currentTarget = null;
         }
-        startTime = Time.time;
+        currentTarget = null;
     }
 }

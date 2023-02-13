@@ -1,11 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SpawnItem : Item
 {
 
     public GameObject[] possibleSpawns;
+
+    private void Awake()
+    {
+        destroyOnPickup = false;
+    }
 
     public void SpawnRandomBodyPart ()
     {

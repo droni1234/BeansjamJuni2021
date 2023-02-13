@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 45665730353181963}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -155,3 +155,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ratDead: {fileID: 5104031595569707242, guid: 355888423d5edb543ad2f961491f1eba, type: 3}
+  item: {fileID: 0}
+  droppedItemPrefab: {fileID: 6550069051078989081, guid: 2dbfff59ba783324c8f2162587b0a7c6, type: 3}

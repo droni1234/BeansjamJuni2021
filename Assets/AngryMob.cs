@@ -160,22 +160,14 @@ public class AngryMob : MonoBehaviour
             }
             else if (currentclips.Length > 1)
             {
-                int randomcount = 0;
                 do
                 {
                     randomInt = Random.Range(0, currentclips.Length);
-                    randomcount++;
-                    if (randomcount > 1000)
-                    {
-                        Debug.LogError("Too Many Fruity Loops");
-                        goto Skip;
-                    }
                 }
-                while (randomInt != lastClip);
+                while (randomInt == lastClip);
             }
             else
                 randomInt = 0;
-            Skip:
             lastClip = randomInt;
             return currentclips[randomInt];
         }

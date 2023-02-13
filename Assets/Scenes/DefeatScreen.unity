@@ -199,7 +199,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1077849913}
   - component: {fileID: 1077849912}
-  - component: {fileID: 1077849911}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -207,14 +206,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1077849911
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1077849910}
-  m_Enabled: 1
 --- !u!20 &1077849912
 Camera:
   m_ObjectHideFlags: 0
@@ -522,7 +513,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Leertaste (Space) f\xFCrs Men\xFC"
+  m_Text: "Linke Maustaste dr\xFCcken zum fortfahren..."
 --- !u!222 &1894504654
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -147,21 +147,11 @@ public class Rat : Interactable
 
     private void UpdateAnimation(Vector2 motion)
     {
+        motion.Normalize();
         animator.SetFloat("DX", motion.x);
         animator.SetFloat("DY", motion.y);
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.GetComponent<SurgeryTable>())
-            surgeryTable = other.GetComponent<SurgeryTable>();
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.GetComponent<SurgeryTable>())
-            surgeryTable = null;
-    }
+    
 
     private void SetState(RatState state)
     {

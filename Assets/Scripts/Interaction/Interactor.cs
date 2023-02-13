@@ -13,13 +13,19 @@ public class Interactor : MonoBehaviour
     public GameObject ratDead;
 
     [HideInInspector]
-    public List<Interactable> currentInteractable;
-    //[HideInInspector]
+    public List<Interactable> currentInteractable = new List<Interactable>();
+    [HideInInspector]
     public GameObject carry;
+    private Pausable _pausable;
 
-    void Update()
+    private void Awake()
     {
-        if (GetComponent<Pausable>().Paused)
+        _pausable = GetComponent<Pausable>();
+    }
+
+    private void Update()
+    {
+        if (_pausable.Paused)
         {
             return;
         }
@@ -29,8 +35,14 @@ public class Interactor : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown("Jump"))
         {
+            if (currentInteractable.Count == 0 && carry)
+            {
+                Item.spawnItem(carry, 10F);
+                Destroy(carry);
+            }
+            
             foreach (Interactable interactable in currentInteractable.ToList())
             {
                 interactable.Trigger(this);

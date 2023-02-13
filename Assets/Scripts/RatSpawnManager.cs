@@ -35,7 +35,7 @@ public class RatSpawnManager : MonoBehaviour
 
             RatWaypoint spawnPoint = spawns[Random.Range(0, ratLevel + 1)];
             var rat = Instantiate(ratPrefab, spawnPoint.transform.position, Quaternion.identity, transform);
-            rat.GetComponent<Rat>().currentWaypoint = spawnPoint.nextPoint;
+            //rat.GetComponent<Rat>().currentWaypoint = spawnPoint.nextPoint;
             spawned++;
         }
 
