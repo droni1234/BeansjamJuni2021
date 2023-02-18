@@ -30,7 +30,7 @@ public class RatBodyPartRoutine : MonoBehaviour
         }
         else
         {
-            AquireNewTarget();
+            AcquireNewTarget();
         }
 
         spawnCoolDownTimer -= Time.deltaTime;
@@ -67,7 +67,7 @@ public class RatBodyPartRoutine : MonoBehaviour
         Destroy(rat.gameObject);
     }
 
-    void AquireNewTarget()
+    private void AcquireNewTarget()
     {
         currentTarget = targets[Random.Range(0, targets.Length)];
         if (currentTarget.pickup) return;

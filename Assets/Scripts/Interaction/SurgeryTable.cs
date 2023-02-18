@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using RattosDronimus;
 using UnityEngine;
 
 public class SurgeryTable : Interactable
@@ -83,25 +84,26 @@ public class SurgeryTable : Interactable
     
     public void ZapRandom()
     {
-        BodyPartSlot targetSlot = GetRandomSlot();
+        BodyPartSlot targetSlot = GetRandomBodyPart();
         if (targetSlot)
         {
             targetSlot.ClearSlot();
         }
     }
 
-    public void Steal(Transform thief)
+    public void Steal(SmartRats rats)
     {
-        BodyPartSlot targetSlot = GetRandomSlot();
+        BodyPartSlot targetSlot = GetRandomBodyPart();
         if (targetSlot)
         {
-            var stolen = targetSlot.BodyPart;
-            stolen.transform.parent = thief;
-            stolen.transform.position = thief.position;
+            var bodyPart = targetSlot.BodyPart;
+            rats.item = bodyPart.gameObject;
+            bodyPart.transform.parent = rats.transform;
+            bodyPart.transform.localPosition = Vector3.zero;
         }
     }
 
-    private BodyPartSlot GetRandomSlot()
+    private BodyPartSlot GetRandomBodyPart()
     {
         List<BodyPartSlot> parts = new List<BodyPartSlot>();
         foreach (BodyPartSlot slot in slots)
@@ -134,4 +136,5 @@ public class SurgeryTable : Interactable
         interactor.DestroyCarriedBodyPart();
         interactor.carry = null;
     }
+    
 }

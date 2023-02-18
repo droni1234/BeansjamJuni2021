@@ -136,7 +136,7 @@ public class Rat : Interactable
         if (!surgeryTable)
             return;
         
-        surgeryTable.Steal(gameObject.transform);
+        //surgeryTable.Steal(gameObject.transform);
                 
         delayTime = 0.0f;
         SetState(RatState.Idle);

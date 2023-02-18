@@ -11,8 +11,6 @@ public class Item : Interactable
 
     protected bool destroyOnPickup = true;
 
-    private bool isFirstFrame = true;
-
     public static void spawnItem(GameObject pickupItem, float decayTime = -1)
     {
         var me = new GameObject("Item");
@@ -25,11 +23,6 @@ public class Item : Interactable
         {
             Destroy(me, decayTime);
         }
-    }
-
-    private void Start()
-    {
-        isFirstFrame = false;
     }
 
     public override void Trigger(Interactor interactor)

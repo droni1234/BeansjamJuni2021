@@ -4,6 +4,7 @@ using UnityEngine;
 public class RatWaypoint : MonoBehaviour
 {
     public RatWaypoint nextPoint;
+    public bool isSurgeryTable = false;
     
     void Start()
     {
